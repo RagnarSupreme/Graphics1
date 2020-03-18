@@ -1,0 +1,14 @@
+﻿  Bitmap.cpp
+  Camera.cpp
+  Framework.cpp
+  Matrix.cpp
+  MD2Loader.cpp
+  Model.cpp
+  Polygon3D.cpp
+  Rasteriser.cpp
+  Vertex.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 346 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  BaseFramework.vcxproj -> D:\G1\Source\BaseFramework\x64\Release\BaseFramework.exe
