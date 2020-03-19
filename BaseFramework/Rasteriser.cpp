@@ -7,8 +7,7 @@ Rasteriser app;
 
 bool Rasteriser::Initialise()
 {
-	if (!MD2Loader::LoadModel("cube.md2", _model,
-		&Model::AddPolygon, &Model::AddVertex))
+	if (!MD2Loader::LoadModel("cube.md2", _model, &Model::AddPolygon, &Model::AddVertex))
 	{
 		return false;
 	}
@@ -16,10 +15,6 @@ bool Rasteriser::Initialise()
 	return true;
 	
 }
-
-
-
-
 
 void Rasteriser::GeneratePerspectiveMatrix(float d, float aspectRatio)
 {
@@ -37,12 +32,10 @@ void Rasteriser::GenerateViewMatrix(float d, float width, float height)
 					0, 0, 0, 1 };
 }
 
-
-
 void Rasteriser::DrawWireFrame(const Bitmap& bitmap)
 {
 	HDC hdc = bitmap.GetDC();
-	vector <Vertex> vertices = _model.GetVertices();
+	vector <Vertex> vertices = _model.GetTransformedVertices();
 	vector <Polygon3D> polygons = _model.GetPolygons();
 
 	for (int i = 0; i < _model.GetPolygonCount(); i++)

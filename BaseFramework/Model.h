@@ -15,6 +15,7 @@ public:
 	//accessors
 	vector<Polygon3D>& GetPolygons();
 	vector<Vertex>& GetVertices();
+	vector<Vertex>& GetTransformedVertices();
 	size_t GetPolygonCount() const;
 	size_t GetVertexCount() const;
 	

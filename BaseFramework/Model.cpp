@@ -12,24 +12,27 @@ Model::~Model()
 
 vector<Polygon3D>& Model::GetPolygons()
 {
-
 	return _polygons;
 }
 
 vector<Vertex>& Model::GetVertices()
 {
-	
 	return _vertices;
+}
+
+vector<Vertex>& Model::GetTransformedVertices()
+{
+	return _transformedVertices;
 }
 
 size_t Model::GetPolygonCount() const
 {
-	return size_t();
+	return _polygons.size();
 }
 
 size_t Model::GetVertexCount() const
 {
-	return size_t();
+	return _vertices.size();
 }
 
 
