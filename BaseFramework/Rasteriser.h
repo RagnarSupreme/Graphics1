@@ -62,7 +62,7 @@ private:
 	float _yScale = 1;
 	float _zScale = 1;
 	float _xRotation = 0.0f;
-	float _yRotation = 0.0f;
+	float _yRotation = 5.0f;
 	float _zRotation = 0.0f;
 
 };

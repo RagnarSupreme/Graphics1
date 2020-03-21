@@ -105,24 +105,74 @@ Matrix Rasteriser::RotationMatrixZ(float Raz)
 			0, 0, 0, 1
 	};
 }
-
+float radians = 3.14f / 180.0f;
+float _xTranslation = 0.0f;
+float _yTranslation = 0.0f;
+float _zTranslation = 0.0f;
+float _yScaling = 1.0f;
+float _xScaling = 1.0f;
+float _zScaling = 1.0f;
+float _xRotations = 0.0f;
+float _yRotations = 0.0f;
+float _zRotations = 0.0f;
+int animationCycle = 0;
 void Rasteriser::Update(const Bitmap& bitmap)
 {
-	float radians = 3.14f / 180.0f;
-	float _xTranslation = 0.0f;
-	float _yTranslation = 0.0f;
-	float _zTranslation = 0.0f;
-	float _yScaling = 1.0f;
-	float _xScaling = 1.0f;
-	float _zScaling = 1.0f;
-	float _xRotations = 0.0f;
-	float _yRotations = 1.0f;
-	float _zRotations = 0.0f;
+	
+	if (animationCycle > 800)
+	{
+		_xRotations += 1.0f;
+	}
+	else if (animationCycle > 700)
+	{
+		_xRotations += 0.0f;
+		_yRotations += 1.0f;
+	}
+	else if (animationCycle > 600)
+	{
+		_yRotations += 0.0f;
+		_zRotations += 1.0f;
+	}
+	else if (animationCycle > 500)
+	{
+		_zRotations += 0.0f;
+		_xTranslation += 0.2f;
+	}
+	else if (animationCycle > 400)
+	{
+		_xTranslation = 0.0f;
+		_yTranslation += 0.2f;
+	}
+	else if (animationCycle > 301)
+	{
+		_yTranslation = 0.0f;
+		_zTranslation += 0.2f;
+	}
+	else if (animationCycle > 300)
+	{
+		_zTranslation = 0.0f;
+		_xScaling = 1.0f;
+		_yScaling = 1.0f;
+		_zScaling = 1.0f;
+	}
+	else if (animationCycle > 200)
+	{
+		_xScaling += 0.1f;
+	}
+	else if (animationCycle > 100)
+	{
+		_yScaling += 0.1f;
+	}
+	else if (animationCycle > 0)
+	{
+		_zScaling += 0.1f;
+	}
 	_formedModel = TranslationMatrix(_xTranslation, _yTranslation, _zTranslation) * RotationMatrixX(_xRotations * radians) *
 		RotationMatrixY(_yRotations * radians) * RotationMatrixZ(_zRotations * radians) * ScalingMatrix(_xScaling, _yScaling, _zScaling);
 
 	GeneratePerspectiveMatrix(1, static_cast<float>(bitmap.GetWidth()) / static_cast<float>(bitmap.GetHeight()));
 	GenerateViewMatrix(1, static_cast<float>(bitmap.GetWidth()), static_cast<float> (bitmap.GetHeight()));
+	animationCycle++;
 }
 
 void Rasteriser::Render(const Bitmap& bitmap)

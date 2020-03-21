@@ -5,7 +5,7 @@ Camera::Camera()
 	_xRotation = 0.0f;
 	_yRotation = 0.0f;
 	_zRotation = 0.0f;
-	_position = Vertex( 0.0f, 0.0f, -50.0f);
+	_position = Vertex( 0.0f, 0.0f, -100.0f);
 }
 
 Camera::Camera(float xRotation, float yRotation, float zRotation, const Vertex& position)
